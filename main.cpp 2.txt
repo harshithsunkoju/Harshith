@@ -1,0 +1,89 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+class Student
+{
+public:
+    int roll;
+    string name;
+    string dept;
+    float cgpa;
+    bool paired = false;
+};
+
+int main()
+{
+    int n;
+
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    vector<Student> s(n);
+
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\nStudent "<<i+1<<endl;
+
+        cout<<"Roll: ";
+        cin>>s[i].roll;
+
+        cout<<"Name: ";
+        cin>>s[i].name;
+
+        cout<<"Department: ";
+        cin>>s[i].dept;
+
+        cout<<"CGPA: ";
+        cin>>s[i].cgpa;
+    }
+
+    cout<<"\nStudent Pairs\n";
+    cout<<"-------------------------\n";
+
+    for(int i=0;i<n;i++)
+    {
+        if(s[i].paired)
+            continue;
+
+        int best=-1;
+        float bestDiff=100;
+
+        for(int j=i+1;j<n;j++)
+        {
+            if(s[j].paired)
+                continue;
+
+            if(s[i].dept==s[j].dept)
+            {
+                float diff=abs(s[i].cgpa-s[j].cgpa);
+
+                if(diff<bestDiff)
+                {
+                    bestDiff=diff;
+                    best=j;
+                }
+            }
+        }
+
+        if(best!=-1)
+        {
+            s[i].paired=true;
+            s[best].paired=true;
+
+            cout<<s[i].name<<"  <-->  "<<s[best].name<<endl;
+        }
+    }
+
+    cout<<"\nStudents without partner\n";
+
+    for(auto st:s)
+    {
+        if(!st.paired)
+            cout<<st.name<<endl;
+    }
+
+    return 0;
+}

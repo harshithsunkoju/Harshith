@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+        }
+
+        /* Hide Checkbox */
+        #darkMode {
+            display: none;
+        }
+
+        /* Header */
+        header {
+            background: #131921;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .dark-toggle {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+        }
+
+        /* Products */
+        .products {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .product {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            transition: .3s;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+        }
+
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: .3s;
+        }
+
+        .product:hover img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            color: red;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        /* Cart */
+        .cart {
+            width: 250px;
+            background: #f1f1f1;
+            padding: 15px;
+            border-left: 2px solid #ddd;
+        }
+
+        /* ===================== */
+        /* DARK MODE */
+        /* ===================== */
+
+        #darkMode:checked+header {
+            background: #000;
+        }
+
+        #darkMode:checked+header .dark-toggle {
+            color: yellow;
+        }
+
+        #darkMode:checked+header+.container {
+            background: #111;
+            color: white;
+            min-height: 100vh;
+        }
+
+        #darkMode:checked+header+.container .product {
+            background: #222;
+            color: white;
+            border-color: #555;
+        }
+
+        #darkMode:checked+header+.container .cart {
+            background: #1b1b1b;
+            color: white;
+            border-left: 2px solid #444;
+        }
+
+        #darkMode:checked+header+.container button {
+            background: #0f9d58;
+        }
+
+        /* Responsive */
+
+        @media(max-width:768px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .cart {
+                width: 100%;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <input type="checkbox" id="darkMode">
+
+    <header>
+
+        <h2>Electronics Store</h2>
+
+        <label for="darkMode" class="dark-toggle">🌙</label>
+
+    </header>
+
+    <div class="container">
+
+        <div class="products">
+
+            <div class="product">
+                <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg" alt="Laptop">
+                <h4>Laptop</h4>
+                <p>₹50,000</p>
+                <p class="badge">20% OFF</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg" alt="Phone">
+                <h4>Phone</h4>
+                <p>₹20,000</p>
+                <p class="badge">15% OFF</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg" alt="Watch">
+                <h4>Watch</h4>
+                <p>₹2,500</p>
+                <p class="badge">25% OFF</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg" alt="Headphones">
+                <h4>Headphones</h4>
+                <p>₹4,000</p>
+                <p class="badge">18% OFF</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg" alt="Earbuds">
+                <h4>Wireless Earbuds</h4>
+                <p>₹3,500</p>
+                <p class="badge">22% OFF</p>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+        <div class="cart">
+
+            <h3>Cart (Static)</h3>
+
+            <ul>
+                <li>Laptop - ₹50,000</li>
+                <li>Phone - ₹20,000</li>
+            </ul>
+
+            <h4>Total: ₹70,000</h4>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
